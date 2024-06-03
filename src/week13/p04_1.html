@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            display: inline-block;
+            width: 150px;
+            height: 130px;
+            border: 1px solid yellowgreen;
+
+            text-align: center;
+        }
+    </style>
+    <script>
+        function store() {
+            if(!window.localStorage) { alert("지원하지 않습니다.");}
+            var city = document.getElementById("city").value;
+            var food = document.getElementById("food").value;
+            localStorage.setItem(city, food);
+
+
+        }
+
+        function navigateToDisplay() {
+            window.location.href = 'display.html';
+        }
+    </script>
+</head>
+<body>
+<h3>여행을 갑시다</h3>
+<hr>
+<div>
+    <p>도시를 선택하세요.</p>
+    <select id="city" multiple size="3">
+        <option selected>파리</option>
+        <option>뉴욕</option>
+        <option>런던</option>
+    </select>
+</div>
+<div>
+    <p>음식을 선택하세요.</p>
+    <select id="food" multiple size="3" onclick="store()">
+        <option selected>햄버거</option>
+        <option>에스프레소 커피</option>
+        <option>치즈 케익</option>
+    </select>
+</div>
+</body>
+</html>

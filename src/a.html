@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>산수를 풀어봅시다</title>
+    <script>
+        var question = document.getElementsByClassName('q');
+        var user = document.getElementsByClassName('u').valueOf();
+        var answer = [question.length];
+
+        var s = document.getElementById('total');
+
+        function printQuestion() {
+            var symbol = ['+', '-', '*', '/'];
+            for (var i = 0; i < question.length; i++) {
+                var n1 = Math.floor(Math.random()*10)+1;
+                var n2 = Math.floor(Math.random()*10)+1;
+                var r = Math.floor(Math.random()*4);
+
+                question[i].innerHTML = n1+symbol[r]+n2;
+
+                answer[i] = Math.floor(eval(n1+symbol[r]+n2));
+                user[i].value = "";
+
+                question[i].style.textDecoration = 'none';
+            }
+        }
+
+        function checkQuestion() {
+            var total = 0;
+            for (var i = 0; i < question.length; i++) {
+                if (answer[i] == parseInt(user[i])) {
+                    total++;
+                }
+                else {
+                    question[i].style.textDecoration = 'line-through';
+                }
+            }
+            s.innerHTML = total;
+        }
+
+    </script>
+</head>
+<body onload="printQuestion()">
+<h3>산수를 풀어봅시다.</h3>
+자동으로 문제가 만들어집니다. 답 입력 후 채점 버튼을 누르세요. <br>
+다시 버튼을 누르면 새로운 문제가 출력됩니다. <br>
+나누기 결과는 정수입니다.
+<hr>
+
+<table>
+    <tr><td><span class="q"></span></td><td><input type="text" class="u"><br></td></tr>
+    <tr><td><span class="q"></span></td><td><input type="text" class="u"><br></td></tr>
+    <tr><td><span class="q"></span></td><td><input type="text" class="u"><br></td></tr>
+    <tr><td><span class="q"></span></td><td><input type="text" class="u"><br></td></tr>
+</table>
+
+<input type="button" value="채점" id="c" onclick="checkQuestion()">
+<span id="total">0</span>
+<input type="button" value="다시" id="r" onclick="printQuestion()">
+</body>
+</html>

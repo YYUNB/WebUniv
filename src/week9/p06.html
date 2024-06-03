@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM 객체 동적 삽입</title>
+</head>
+<body>
+<h3>정답의 동적 삽입</h3>
+<hr>
+<p>
+Q1. What is the learning technique that intelligent agents ought to take actions
+in an environment in order to maximize the notion of cumulative reward?
+</p>
+<button onclick="show(this, 'Reinforcement Learning')">A1</button>
+
+
+<script>
+    function show(obj, answer) {
+        var div = document.createElement('div');
+        div.innerHTML = answer;
+        obj.parentElement.appendChild(div);
+        div.addEventListener('click', function() {
+            this.parentElement.removeChild(div);
+        });
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>채운 사각형과 원호 그리기</title>
+</head>
+<body>
+<h3>채운 사각형과 원호 그리기</h3>
+<hr>
+<canvas id="myCanvas" style="background-color: aliceblue"
+        width="300" height="450"></canvas>
+<script>
+    var canvas = document.getElementById("myCanvas");
+    var context = canvas.getContext("2d");
+
+    context.fillStyle = "violet";
+    context.fillRect(20, 20, 100, 100);  // 외곽선 없이 채운 사각형
+
+    context.beginPath();
+    context.rect(20, 150, 100, 100);
+    context.fillStyle = "violet";
+    context.fill();  // 내부 채우기
+
+    context.strokeStyle = "gray";
+    context.lineWidth = 10;
+    context.stroke();
+
+    context.beginPath();
+    context.moveTo(80, 340);
+    context.arc(80, 340, 50, 0, 1.5 * Math.PI);
+    context.closePath();  // 원호의 끝점, 경로 시작점(원호 중심) 연결하는 직선 자동 추가
+    context.fillStyle = "yellowgreen";
+    context.fill();
+
+    context.strokeStyle = "gray";
+    context.lineWidth = 20;
+    context.stroke();
+
+    context.font = "50px arial";
+    context.strokeStyle = "blue";
+    context.lineWidth = 2;
+    context.textAlign = "left"
+    context.strokeText("Javascript", 30, 100);
+
+    context.font = "italic 50px forte";
+    context.fillStyle = "green";
+    context.textAlign = "right";
+    context.fillText("Javascript", 290, 140);
+
+
+
+</script>
+</body>
+</html>

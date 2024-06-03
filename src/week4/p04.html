@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>text-shadow와 box-shadow</title>
+    <style>
+        h3 {
+            text-align: center;
+        }
+
+        div.fontEffect {
+            font : normal 24px Verdana;
+            color : yellow;
+            text-shadow : 2px 2px 2px blue;
+        }
+
+        div.box {
+            width: 150px;
+            height: 150px;
+            border: grey;
+            float:left;
+            margin-right: 10px;
+            background-image: url("p03_1.jpg");
+            background-size: 150px 150px;
+            background-repeat: no-repeat;
+        }
+
+        div:hover {
+            box-shadow: 0px 0px 10px blue;
+        }
+    </style>
+</head>
+<body>
+<h3><div class="fontEffect">Most Visited Pages</div></h3>
+<hr>
+<div class="box"><a href="https://www.naver.com/" target="_blank"></a></div>
+<div class="box"></div>
+<div class="box"></div>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>z-index 스타일 프로퍼티</title>
+    <style>
+        img {
+            position: absolute;
+            width: 100px;
+            height: 150px
+        }
+    </style>
+</head>
+<body>
+<h3>z-index 스타일 프로퍼티</h3>
+<hr><br>
+<img src="1.png">
+<img src="2.jpg">
+<img src="3.jpg">
+<img src="7.jpg">
+<script>
+    // why 얘는 script문을 head에 넣으면 실행이 안되는가
+    var imgArr = document.getElementsByTagName("img");
+    for (var i = 0; i < imgArr.length; i++) {
+        var obj = imgArr[i];
+        obj.style.zIndex = i;
+        obj.onclick = shuffle;
+    }
+
+    function shuffle() {
+        for (var i = 0; i < imgArr.length ; i++) {
+            var obj = imgArr[i];
+            obj.style.zIndex++;
+            obj.style.zIndex %= imgArr.length;
+        }
+    }
+</script>
+</body>
+</html>

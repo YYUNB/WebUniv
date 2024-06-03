@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        table, th, td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+<h2>서적 주문 양식</h2>
+<p>주문서</p>
+<table>
+    <tr>
+        <th>책 제목</th>
+        <th>가격</th>
+        <th>수량</th>
+        <th>합계</th>
+    </tr>
+    <tr>
+        <td>웹 프로그래밍</td>
+        <td>25,000원</td>
+        <td><input type="number" id="webQty" value="0" min="0"></td>
+        <td id="webTotal">0원</td>
+    </tr>
+    <tr>
+        <td>자바 프로그래밍</td>
+        <td>27,000원</td>
+        <td><input type="number" id="javaQty" value="0" min="0"></td>
+        <td id="javaTotal">0원</td>
+    </tr>
+    <tr>
+        <td>알고리즘</td>
+        <td>25,000원</td>
+        <td><input type="number" id="algoQty" value="0" min="0"></td>
+        <td id="algoTotal">0원</td>
+    </tr>
+    <tr>
+        <td>합계</td>
+        <td></td>
+        <td id="totalQty">0</td>
+        <td id="totalSum">0원</td>
+    </tr>
+</table>
+<button onclick="calculateTotal()">합계 계산</button>
+<button onclick="resetValues()">초기화</button>
+
+<script>
+    function calculateTotal() {
+        let webQty = parseInt(document.getElementById('webQty').value);
+        let javaQty = parseInt(document.getElementById('javaQty').value);
+        let algoQty = parseInt(document.getElementById('algoQty').value);
+
+        let webTotal = webQty * 25000;
+        let javaTotal = javaQty * 27000;
+        let algoTotal = algoQty * 25000;
+
+        document.getElementById('webTotal').innerText = webTotal.toLocaleString() + '원';
+        document.getElementById('javaTotal').innerText = javaTotal.toLocaleString() + '원';
+        document.getElementById('algoTotal').innerText = algoTotal.toLocaleString() + '원';
+
+        let totalQty = webQty + javaQty + algoQty;
+        let totalSum = webTotal + javaTotal + algoTotal;
+
+        document.getElementById('totalQty').innerText = totalQty;
+        document.getElementById('totalSum').innerText = totalSum.toLocaleString() + '원';
+    }
+
+    function resetValues() {
+        document.getElementById('webQty').value = 0;
+        document.getElementById('javaQty').value = 0;
+        document.getElementById('algoQty').value = 0;
+        document.getElementById('webTotal').innerText = '0원';
+        document.getElementById('javaTotal').innerText = '0원';
+        document.getElementById('algoTotal').innerText = '0원';
+        document.getElementById('totalQty').innerText = '0';
+        document.getElementById('totalSum').innerText = '0원';
+    }
+</script>
+</body>
+</html>

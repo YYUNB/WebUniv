@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>연습문제</title>
+    <style>
+        h3 {
+            position : relative;
+            left: 10%;
+            width: 60%;
+            margin-inside: 5px;
+            border-style: double;
+            text-align: center;
+        }
+        @keyframes header {
+            100% {background: yellow; border-color: red; }
+        }
+        #header:hover {
+            animation-name: header;
+            animation-duration: 2s;
+        }
+        img {
+            width: 30px;
+            height: 30px;
+            transition: width, height 5s;
+            margin-inside: 5px;
+            border-style: solid;
+            border-radius: 10px;
+        }
+
+        #img:hover {
+            width: 60px;
+            height: 60px;
+            border-radius: 30px;
+        }
+    </style>
+</head>
+<body>
+<h3 id="header">5G (Wikipedia)</h3>
+5G networks ~~
+<img src="1.jpg"; id="img">
+</body>
+</html>
