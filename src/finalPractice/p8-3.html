@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>z-index 스타일 프로퍼티</title>
+    <style>
+        img {
+            width: 200px;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<h3>z-index 스타일 프로퍼티</h3>
+<hr>
+<img src="1.png" onclick="clickImg(this)">
+<img src="2.jpg" onclick="clickImg(this)">
+<img src="3.jpg" onclick="clickImg(this)">
+<img src="7.jpg" onclick="clickImg(this)">
+
+<script>
+    function clickImg(obj) {
+        obj.style.zIndex--;
+    }
+</script>
+</body>
+</html>
