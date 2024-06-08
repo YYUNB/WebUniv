@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>계산기 만들기</title>
+    <style>
+        button {
+            width: 50px;
+            margin: 10px;
+        }
+        div {
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+<h3>계산기 만들기</h3>
+<hr>
+<input type="text" id="text" value="0" size="35">
+<div id="btnDiv"></div>
+<script>
+    var div = document.getElementById("btnDiv");
+
+    var btnValue = [
+        "BACK", "CE", "C", "=",
+        "7", "8", "9", "/",
+        "4", "5", "6", "*",
+        "1", "2", "3", "-",
+        "0", "+", "NONE", "NONE"
+    ];
+
+    var text = document.getElementById('text');
+    var str = "";
+
+    for (var i = 0; i < 20; i++) {
+        var btn = document.createElement('button');
+        btn.innerHTML = btnValue[i];
+        div.appendChild(btn);
+
+        btn.addEventListener('click', function() {
+            printBtn(this.innerHTML);
+        });
+    }
+
+    function printBtn(value) {
+        if (value == "CE" || value == "C") str = "";
+        else if (value == "BACK") str = str.slice(0, -1);
+        else if (value == "=") str = eval(str);
+        else if (value !== "NONE") str += value;
+        text.value = str;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>라디오 버튼과 이미지 출력</title>
+</head>
+<body>
+<h3>라디오 버튼을 클릭하면 이미지를 출력합니다</h3>
+<hr>
+<input type="radio" name="img" value="1.png">1
+<input type="radio" name="img" value="2.jpg">2
+<input type="radio" name="img" value="3.jpg">3
+<br>
+<img id="img" src="" width="140">
+<script>
+    var r = document.getElementsByName('img');
+    var img = document.getElementById('img');
+
+    for (var i = 0; i < r.length; i++) {
+        r[i].addEventListener('click', function() { checkRadio(); })
+    }
+
+    function checkRadio() {
+        for (var i = 0; i < r.length; i++) {
+            if(r[i].checked == true) img.src = r[i].value;
+
+        }
+    }
+</script>
+</body>
+</html>
