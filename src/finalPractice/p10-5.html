@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>산수를 풀어봅시다.</title>
+</head>
+<body onload="makeExam()">
+<h3>산수 문제를 풀어봅시다.</h3>
+자동으로 문제가 만들어집니다. 답 입력 후 채점 버튼을 누르세요.
+다시 버튼을 누르면 새로운 문제가 출력됩니다.
+나누기 결과는 정수입니다.
+<hr>
+<p><span class="p"></span> <input class="a" type="text" size="5"></p>
+<p><span class="p"></span> <input class="a" type="text" size="5"></p>
+<p><span class="p"></span> <input class="a" type="text" size="5"></p>
+<p><span class="p"></span> <input class="a" type="text" size="5"></p>
+<button onclick="makeExam()">다시</button> <span id="score">0</span>
+
+<script>
+    var pArr = document.getElementsByClassName("p");
+    var aArr = document.getElementsByClassName("a");
+
+    var score = document.getElementById('score');
+
+    var sym = ["+", "-", "*", "/"];
+    var correct = [0,0,0,0];
+
+    function makeExam() {
+        setTimeout('checkAnswer()', 1000 * 10);
+        for (let i = 0; i < pArr.length; i++) {
+            pArr[i].style.textDecoration = 'none';
+            score.innerHTML = 0;
+
+            let n1 = Math.floor(Math.random() * 10) + 1;
+            let n2 = Math.floor(Math.random() * 10) + 1;
+            let s = Math.floor(Math.random() * 4);
+
+            pArr[i].innerHTML = n1 + sym[s] + n2;
+            aArr[i].value = "";
+            correct[i] = eval(pArr[i].innerHTML);
+        }
+    }
+
+    function checkAnswer() {
+        let s = 0;
+        for (let i = 0; i < aArr.length; i++) {
+            if (parseInt(aArr[i].value) === correct[i]) s++;
+            else pArr[i].style.textDecoration = "line-through";
+        }
+        score.innerHTML = s;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div { background: aliceblue; border: 1px solid black}
+    </style>
+
+</head>
+<body onload="startClock()">
+<h3>div 태그에 시계 만들기</h3>
+<hr>
+<div id="div"></div>
+<script>
+    var div = document.getElementById('div');
+
+    function startClock() {
+        var current = new Date();
+        div.innerHTML = current.toLocaleTimeString();
+        setTimeout('startClock()', 1000);
+    }
+
+</script>
+</body>
+</html>
