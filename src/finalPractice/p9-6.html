@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>서적 주문 양식</title>
+</head>
+<body>
+<h3>서적 주문 양식</h3>
+<p>주문서</p>
+<table border="1">
+    <thead>
+    <tr><th>책 제목</th><th>가격</th><th>수량</th><th>합계</th></tr>
+    </thead>
+    <tbody>
+    <tr><td>웹프로그래밍</td><td>25,000원</td>
+        <td><input class="num" type="text" size="1" value="0"></td>
+        <td><input class="sum" type="text" size="5" value="0"> 원</td>
+    </tr>
+    <tr><td>자바프로그래밍</td><td>27,000원</td>
+        <td><input class="num" type="text" size="1" value="0"></td>
+        <td><input class="sum" type="text" size="5" value="0"> 원</td>
+    </tr>
+    <tr><td>알고리즘</td><td>25,000원</td>
+        <td><input class="num" type="text" size="1" value="0"></td>
+        <td><input class="sum" type="text" size="5" value="0"> 원</td>
+    </tr>
+    </tbody>
+    <tfoot>
+    <tr><td>합계</td><td></td>
+        <td><input class="num" type="text" size="1" value="0"></td>
+        <td><input class="sum" type="text" size="5" value="0"> 원</td>
+    </tr>
+    </tfoot>
+</table><br>
+<button onclick="totalSum()">합계계산</button>
+<button onclick="clear()">초기화</button>
+
+<script>
+    var nums = document.getElementsByClassName('num')  ;
+    var sums = document.getElementsByClassName('sum');
+    var prices = [25000, 27000, 25000];
+    function totalSum() {
+        var n=0, s=0;
+        for (let i = 0; i < 3; i++) {
+            sums[i].value = nums[i].value * prices[i];
+
+            n += parseInt(nums[i].value);
+            s += parseInt(sums[i].value);
+        }
+        nums[3].value = n;
+        sums[3].value = s;
+    }
+
+    function clear() {
+        for (let i = 0; i < 4; i++) {
+            nums[i].value = 0;
+            sums[i].value = 0;
+        }
+    }
+</script>
+</body>
+</html>
