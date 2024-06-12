@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>캔버스에 파이 차트 그리기</title>
+    <style> input{width: 60px}</style>
+</head>
+<body onload="drawChart()">
+<h3>학점 별로 학생 수를 입력하면 파이 차트로 비율 그리기</h3>
+<table>
+    <tr>
+        <td>A <input class="input" id="A"> 명</td>
+        <td>B <input class="input" id="B"> 명</td>
+        <td>C <input class="input" id="C"> 명</td>
+    </tr>
+    <tr>
+        <td>D <input class="input" id="D"> 명</td>
+        <td>F <input class="input" id="F"> 명</td>
+        <td><button onclick="setGrade()">차트그리기</button></td>
+    </tr>
+</table>
+<canvas id="myCanvas" width="400" height="300" style="background: aliceblue"></canvas>
+
+<script>
+    var canvas = document.getElementById('myCanvas');
+    var context = canvas.getContext('2d');
+
+    var grades = ["A", "B", "C", "D", "F"];
+    var colors = ["blue", "green", "yellow", "magenta", "red"];
+
+    function drawChart(pers) {
+        context.clearRect(0, 0, canvas.width, canvas.height);
+
+        context.beginPath();
+        for (let i = 0; i < 5; i++) {
+            context.fillStyle = "blue";
+            context.fillText(grades[i] + " 학점 " + parseInt(pers[i]) + "% : " + colors[i], 10, 20 + (i * 15));
+        }
+        var startAngle = 0;
+        for (let i = 0; i < pers.length; i++) {
+            var sliceAngle = (pers[i] / 100) * 2 * Math.PI;
+            context.beginPath();
+            context.moveTo(canvas.width / 2, canvas.height / 2);
+            context.arc(canvas.width / 2, canvas.height / 2, 100, startAngle, startAngle + sliceAngle);
+            context.closePath();
+            context.fillStyle = colors[i];
+            context.fill();
+            startAngle += sliceAngle;
+        }
+    }
+
+    function setGrade() {
+        var aCount = parseInt(document.getElementById('A').value);
+        var bCount = parseInt(document.getElementById('B').value);
+        var cCount = parseInt(document.getElementById('C').value);
+        var dCount = parseInt(document.getElementById('D').value);
+        var fCount = parseInt(document.getElementById('F').value);
+
+        var total = aCount + bCount + cCount + dCount + fCount;
+        if (total === 0) return;
+
+        var pers = [
+            (aCount / total) * 100,
+            (bCount / total) * 100,
+            (cCount / total) * 100,
+            (dCount / total) * 100,
+            (fCount / total) * 100
+        ];
+        drawChart(pers);
+    }
+
+</script>
+</body>
+</html>

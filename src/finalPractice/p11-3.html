@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>폼으로 사각형 그리기</title>
+    <style>
+        table {  text-align: right}
+    </style>
+</head>
+<body>
+<h3>폼으로 사각형 그리기</h3>
+<hr>
+<table>
+    <tr><td>x <input class="input"></td><td>y <input class="input"></td></tr>
+    <tr><td>width <input class="input"></td><td>height  <input class="input"></td></tr>
+    <tr><td>선굵기 <input class="input"></td><td>선색 <input class="input" type="color"></td></tr>
+    <tr><td><button onclick="drawCanvas()">그리기</button></td><td><button onclick="clearCanvas()">지우기</button></td></tr>
+</table>
+<canvas id="myCanvas" width="500" height="250" style="background: aliceblue"></canvas>
+<script>
+    var canvas = document.getElementById('myCanvas');
+    var context = canvas.getContext('2d');
+
+    var inputs = document.getElementsByClassName('input');
+    var inputValues = ["","","","",""];
+    function drawCanvas() {
+        for (let i = 0; i < inputs.length; i++) inputValues[i] = inputs[i].value;
+
+        context.beginPath();
+        context.rect(inputValues[0], inputValues[1], inputValues[2], inputValues[3]);
+        context.lineWidth = inputValues[4];
+        context.strokeStyle = inputValues[5];
+        context.stroke();
+    }
+
+    function clearCanvas() {
+        for (let i = 0; i < inputs.length; i++) inputs[i].value = "";
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        context.beginPath();
+    }
+</script>
+
+</body>
+</html>

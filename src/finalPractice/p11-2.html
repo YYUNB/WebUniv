@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>오륜기 그리기</title>
+    <script>
+        function drawCircle(ctx, x, y, radius, color) {
+            ctx.beginPath();
+            ctx.arc(x, y, radius, 0, 2 * Math.PI, false); // false=시계
+            ctx.lineWidth = 3;
+            ctx.strokeStyle = color;
+            ctx.stroke();
+        }
+    </script>
+</head>
+<body>
+<h3>drawCircle() 만들기</h3>
+<hr>
+<canvas id="myCanvas" width="420" height="220"
+        style="background: aliceblue"></canvas>
+<script>
+    var canvas = document.getElementById('myCanvas');
+    var context = canvas.getContext('2d');
+    var color = ["blue", "black", "red", "yellow", "green"];
+
+    for (let i = 0; i < 5; i++) {
+        if (i < 3) drawCircle(context, 100 + (65 * i), 100, 30, color[i]);
+        else drawCircle(context, (65 * i) - 62, 130, 30, color[i]);
+    }
+</script>
+</body>
+</html>

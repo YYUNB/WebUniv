@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        var context;
+        // 공 속도: 프레임 당 5px
+        var dx = 5;
+        var dy = 5;
+        // 공 위치
+        var y = 100;
+        var x = 100;
+
+        function draw() {
+            var canvas = document.getElementById('myCanvas');
+            var context = canvas.getContext('2d');
+            context.clearRect(0, 0, 300, 200);
+            context.beginPath();
+            context.fillStyle = 'red';
+            context.arc(x, y, 20, 0, Math.PI * 2, true);
+            context.closePath();
+            context.fill();
+            if (x < (0 + 20) || x > (300 - 20)) dx = -dx;
+            if (y<(0 + 20)|| y>(200 - 20)) dy = -dy;
+            x += dx;
+            y += dy;
+        }
+
+        setInterval(draw, 30);
+    </script>
+</head>
+<body>
+<canvas id="myCanvas" width="300" height="200" style="background: yellow"></canvas>
+</body>
+</html>

@@ -30,9 +30,8 @@
         drawing=true;
     }
     function up(e){
-        if(!drawing){
+        if(!drawing)
             return;
-        }
         curX=e.offsetX;
         curY=e.offsetY;
         draw(curX,curY);

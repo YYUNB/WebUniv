@@ -14,13 +14,11 @@
 <div id="div"></div>
 <script>
     var div = document.getElementById('div');
-
     function startClock() {
         var current = new Date();
         div.innerHTML = current.toLocaleTimeString();
         setTimeout('startClock()', 1000);
     }
-
 </script>
 </body>
 </html>

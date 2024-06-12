@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            border: 1px solid pink;
+            background: beige;
+            width: 100px;
+        }
+        span {
+            color: blue;
+            font-size: 50px;
+            cursor: pointer; /* 숫자에 커서를 올리면 포인터로 변경 */
+        }
+    </style>
+</head>
+<body>
+<h3>겜블링 게임</h3>
+각 숫자를 클릭하면 0에서 2 사이 난수로 바뀜<br>
+모두 같은 숫자가 나오면 승리
+<hr>
+<div>
+    <span>0</span>
+    <span>0</span>
+    <span>0</span>
+</div>
+<p id="p"></p>
+<script>
+    var spans = document.getElementsByTagName('span');
+    var p = document.getElementById('p');
+
+    for (var i = 0; i < spans.length; i++) {
+        spans[i].onclick = function () {
+            this.innerText = Math.floor(Math.random() * 3);
+            checkWin();
+        };
+    }
+
+    function checkWin() {
+        var firstValue = spans[0].innerText;
+        var win = true;
+        for (var i = 1; i < spans.length; i++) {
+            if (spans[i].innerText !== firstValue) {
+                win = false;
+                break;
+            }
+        }
+        if (win) p.innerHTML = "승리";
+        else p.innerHTML = "패배";
+    }
+</script>
+</body>
+</html>
